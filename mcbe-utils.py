@@ -190,7 +190,7 @@ def main():
 	parser.add_argument('-p', '--port', help='set port', type=int, default=19132)
 	parser.add_argument('-t', '--thread', help='set max thread count', type=int, default=64)
 	parser.add_argument('--verbose', help='increase output verbosity', action='store_true')
-	parser.add_argument('--timeout', help='socket timeout', type=int, default=10)
+	parser.add_argument('--timeout', help='socket timeout', type=int, default=4)
 	args = parser.parse_args()
 
 	target_ip = args.address
