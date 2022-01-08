@@ -18,7 +18,7 @@ def log(text, v=False):
 
 
 def clean_formated_text(string):
-	return re.sub(r'§[0-9a-fk-org]', '', string)
+	return re.sub(r'§[0-9a-gk-or]', '', string)
 
 
 def ping():
