@@ -88,7 +88,7 @@ def ping_to(ip, port=19132):
 
 def scan():
 	with futures.ThreadPoolExecutor(max_workers=thread_count) as executor:
-		for future in futures.as_completed([executor.submit(ping_to, target_ip, x) for x in range(0, 65535 + 1)]):
+		for future in futures.as_completed([executor.submit(ping_to, target_ip, x) for x in range(1, 65535 + 1)]):
 			response = future.result()
 			if not response['time'] is None:
 				server_name = clean_formated_text(response['server_name'])
