@@ -123,7 +123,7 @@ def query_to(ip, port):
 			b'\xff\xff\xff\x01'
 			), (ip, port))
 
-		data, addr = s.recvfrom(1024 * 2)
+		data, addr = s.recvfrom(1024 * 8)
 
 		tmp = struct.unpack_from('=ci', data)
 		if tmp[0] != b'\x00' or tmp[1] != session_id:
