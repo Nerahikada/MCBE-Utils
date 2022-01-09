@@ -57,7 +57,7 @@ def ping_to(ip, port=19132):
 		payload = b'\x01' + struct.pack('>Q', random.randint(0, 2147483647)) + RAKLIB_MAGIC + struct.pack('>Q', 0)
 		s.sendto(payload, (ip, port))
 
-		data, addr = s.recvfrom(2048)
+		data, addr = s.recvfrom(1024 * 2)
 
 		if RAKLIB_MAGIC in data and MCPE_PONG in data:
 			ping_ms = int(round(time.time() * 1000)) - start_ms
@@ -107,7 +107,7 @@ def query_to(ip, port):
 		session_id = random.randint(0, 2147483647)
 		s.sendto(b'\xfe\xfd' + b'\x09' + struct.pack('i', session_id), (ip, port))
 
-		data, addr = s.recvfrom(2048)
+		data, addr = s.recvfrom(1024 * 2)
 
 		tmp = struct.unpack_from('=ci', data)
 		if tmp[0] != b'\x09' or tmp[1] != session_id:
@@ -123,7 +123,7 @@ def query_to(ip, port):
 			b'\xff\xff\xff\x01'
 			), (ip, port))
 
-		data, addr = s.recvfrom(2048)
+		data, addr = s.recvfrom(1024 * 2)
 
 		tmp = struct.unpack_from('=ci', data)
 		if tmp[0] != b'\x00' or tmp[1] != session_id:
